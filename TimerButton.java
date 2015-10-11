@@ -13,14 +13,15 @@ public class TimerButton extends JButton{
 		this.setText(START);
 	}
 
-	public void toggleLabel(){
+	public Boolean toggleLabel(){
 		if (timerActive){
 			this.setText(START);
 			timerActive = false;
-			return;
+			return timerActive;
 		}
 		this.setText(STOP);
 		timerActive = true;
+		return timerActive;
 	}
 
 }

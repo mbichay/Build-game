@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class CardTable extends JFrame{
-	static final int WIDTH = 900;
+	static final int WIDTH = 1100;
 	static final int HEIGHT = 700;
 	private int numCardsPerHand;
 	private int numPlayers;
@@ -15,7 +15,7 @@ public class CardTable extends JFrame{
 	private JLabel[] computerLabels;
 	private JLabel arenaLeftLabel, arenaRightLabel;
 	private JLabel computerScoreLabel, humanScoreLabel;
-	private JLabel timerLabel;
+	private TimerLabel timerLabel;
 	TimerButton timerButton;
 	CardButton[] cardButtons;
 	LeftRightButton[] leftRightButtons;
@@ -126,14 +126,17 @@ public class CardTable extends JFrame{
 		humanScoreLabel.setFont(new Font("Serif", Font.PLAIN, 55));
 		pnlHumanScore.add(humanScoreLabel);
 
-		timerLabel = new JLabel("", JLabel.CENTER);
+		timerLabel = new TimerLabel();
 		timerLabel.setFont(new Font("Serif", Font.PLAIN, 55));
 		pnlTimer.add(timerLabel, 0);
 	}
 
 
 	public void toggleTimer() {
-		this.timerButton.toggleLabel();
+		if (this.timerButton.toggleLabel())
+			this.timerLabel.startTimer();
+		else
+			this.timerLabel.stopTimer();
 		setVisible(true);
 	}
 
@@ -218,8 +221,9 @@ public class CardTable extends JFrame{
 		}
 		pnlArena.removeAll();
 		pnlGameInfo.removeAll();
+		pnlTimer.removeAll();
 
-		JLabel winningLabel = new JLabel(winningText);
+		JLabel winningLabel = new JLabel(winningText, JLabel.CENTER);
 		winningLabel.setFont(new Font("Serif", Font.PLAIN, 55));
 		pnlArena.add(winningLabel);
 		setVisible(true);
