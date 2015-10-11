@@ -6,8 +6,7 @@
 import java.util.Collections;
 import java.util.Arrays;
 
-public class Deck 
-{
+public class Deck {
    // CONSTANTS
    public static final int MAX_PACK = 6;
    public static final int MAX_CARDS_IN_PACK = 56;
@@ -27,8 +26,7 @@ public class Deck
    */
    Deck()   {  Deck.allocateMasterPack(); }
    
-   Deck(int numPacks)
-   {
+   Deck(int numPacks){
       Deck.allocateMasterPack();
       
       if (numPacks > MAX_PACK)
@@ -46,8 +44,7 @@ public class Deck
       deck is unshuffled by default
       topCard = last card added to the deck (index of)
    */
-   public void init(int numPacks) 
-   {  
+   public void init(int numPacks) {  
 
       cards = new Card[MAX_CARDS_IN_PACK * numPacks];
       
@@ -69,13 +66,10 @@ public class Deck
       deals a card from the "top" of the deck
       uses topCard index value to get the card value and clone it to return
    */
-   public Card dealCard()
-   {  
+   public Card dealCard(){  
       if(topCard < 0){
          return new Card('Z',Card.Suit.HEARTS);
-      }
-      else
-      {
+      }else{
          Card tCard = cards[topCard].clone();
          topCard--;
          return tCard;
@@ -93,8 +87,7 @@ public class Deck
       method that receives a Card and inspects it for a valid value
       if is valid then card copy is returned
    */
-   public Card inspectCard(int k)
-   {
+   public Card inspectCard(int k){
       if(k > topCard || k < 0){
          return new Card('Z',Card.Suit.SPADES);
       }
@@ -126,8 +119,7 @@ public class Deck
       method used to add a Card to the array of cards
       also updates index of topCard
    */
-   boolean addCard(Card card)
-   {
+   boolean addCard(Card card){
       if (topCard + 1 == cards.length)
          return false;
       topCard++;
@@ -140,11 +132,9 @@ public class Deck
       method that removes Card from array of Cards
       also updates index of topCard
    */
-   boolean removeCard(Card card) 
-   {
+   boolean removeCard(Card card) {
       for (int i = 0; i < topCard; ++i)
-         if (cards[i].equals(card)) 
-         {
+         if (cards[i].equals(card)) {
             cards[i] = cards[topCard];
             topCard--;
             return true;

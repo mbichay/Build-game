@@ -8,8 +8,7 @@ import java.util.Map;
 
 public class Card 
 {
-   enum Suit 
-   {
+   enum Suit {
        SPADES      ("Spades"),
        HEARTS      ("Hearts"),
        DIAMONDS    ("Diamonds"),
@@ -21,10 +20,8 @@ public class Card
 
        public String asString() {return suit;}
 
-       public int asInt() 
-       {
-         switch(suit) 
-         {
+       public int asInt() {
+         switch(suit) {
             case "Spades": return 0;
             case "Hearts": return 1;
             case "Diamonds": return 2;
@@ -34,8 +31,7 @@ public class Card
 
    }
 
-   enum Value 
-   {
+   enum Value {
        TWO     ('2'),
        THREE   ('3'),
        FOUR    ('4'),
@@ -57,11 +53,9 @@ public class Card
        private final char value;
          private static Map<Character, Value> valueMap;
 
-         private static void initializeMap() 
-         {
+         private static void initializeMap() {
             valueMap =  new HashMap<Character, Value>();
-            for (Value v : Value.values()) 
-            {
+            for (Value v : Value.values()) {
                valueMap.put(v.value, v);
             }
          }
@@ -71,10 +65,8 @@ public class Card
        private Value(final char newValue) { value = newValue; }
 
 
-       public int asInt() 
-       { 
-         switch(value) 
-         {
+       public int asInt() { 
+         switch(value) {
             case 'T': return 10;
             case 'J': return 11;
             case 'Q': return 12;
@@ -89,8 +81,7 @@ public class Card
        public char asChar() { return value; }
 
 
-       public static Value fromChar(char c)
-       {
+       public static Value fromChar(char c){
          if (valueMap == null)
             initializeMap();
          Value value = valueMap.get(c);
@@ -125,19 +116,16 @@ public class Card
    
    
    // methods
-    public String toString()
-    {
+    public String toString(){
       if(getErrorFlag())
          return "** illegal card entry **";
 
       return getValue().asChar() + " of " + getSuit().asString();
    }
     
-    public boolean set(char value, Suit suit) 
-    {
+    public boolean set(char value, Suit suit) {
        this.value = Value.fromChar(Character.toUpperCase(value));
-       if (this.value == null)
-       {
+       if (this.value == null){
          this.errorFlag = true;
          return false;
        }
@@ -153,20 +141,16 @@ public class Card
     public boolean getErrorFlag() {  return this.errorFlag; }
 
 
-   public static void arraySort(Card[] cards,int arraySize)
-   {
+    public static void arraySort(Card[] cards,int arraySize){
        Boolean itsGoTime = true;
        Card temp;
 
        //At best, this is an O(n) sorting method...
        //At worst, its an O(n^2)
-       while (itsGoTime) 
-       {
+       while (itsGoTime) {
          itsGoTime = false;
-         for (int i = 0 ; i < arraySize-1; ++i) 
-         {
-            if (cards[i].getValue().asInt() > cards[i+1].getValue().asInt()) 
-            {
+         for (int i = 0 ; i < arraySize-1; ++i) {
+            if (cards[i].getValue().asInt() > cards[i+1].getValue().asInt()) {
                temp = cards[i];
                cards[i] = cards[i+1];
                cards[i+1] = temp;
@@ -176,8 +160,7 @@ public class Card
        }
     }
 
-    public Boolean equals(Card card) 
-    {
+    public Boolean equals(Card card) {
       if (card.getValue().asInt() == this.value.asInt()
          && card.getSuit().asString().equals(this.suit.asString()))
          return true;

@@ -3,8 +3,7 @@
    added methods
 */
 
-public class Hand 
-{
+public class Hand {
    // constants
    public static final int MAX_CARDS = 52;
    
@@ -18,8 +17,7 @@ public class Hand
       creates and instantiates an array (myCards)
       calls resetHand method
    */
-   Hand()
-   {
+   Hand(){
       myCards = new Card[MAX_CARDS];
       resetHand();
    }
@@ -31,8 +29,7 @@ public class Hand
       resets the myCards array with null values
       resets numCards to 0
    */
-   public void resetHand()
-   {
+   public void resetHand(){
       for(int x = 0 ; x < MAX_CARDS ; x++)
          myCards[x] = null;
       
@@ -45,10 +42,8 @@ public class Hand
       cannot exceed MAX_CARDS, if it does then return false
       increment numCards if true
    */
-   public boolean takeCard(Card card)
-   {
-      if(numCards < MAX_CARDS)
-      {
+   public boolean takeCard(Card card){
+      if(numCards < MAX_CARDS){
          numCards++;
          myCards[numCards] = card;
          return true;
@@ -91,8 +86,7 @@ public class Hand
       method that takes a Card and is able to print the values in a String
       if hand is empty, then show empty space
    */
-   public String toString()
-   {      
+   public String toString(){      
       if(numCards == 0)
          return "My Hand:[]";
       
