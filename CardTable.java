@@ -151,12 +151,10 @@ public class CardTable extends JFrame{
 
 
 	public void addLeftRightListener(int index, ActionListener action){
-		//needs index checking
 		this.leftRightButtons[index].addActionListener(action);
 	}
 
 	public void addCardButtonListener(int index, ActionListener action){
-		//needs index checking
 		this.cardButtons[index].addActionListener(action);
 	}
 
@@ -166,27 +164,20 @@ public class CardTable extends JFrame{
 
 
 	public void toggleLeftRightButton(int index){
-		//needs index checking
 		this.leftRightButtons[index].toggleLabel();
 		setVisible(true);
 	}
 
 	public String getLeftRightButtonLabel(int index){
-		//needs index checking
 		return this.leftRightButtons[index].getText().toString();
 	}
 
 	public void updateBackIcon(int index, Icon image){
-		//needs index checking
-		//needs image checking
-
 		this.computerLabels[index].setIcon(image);
 		setVisible(true);
 	}
 
 	public void updateCardIcon(int index, Icon image){
-		//needs index checking
-		//needs image checking
 		this.cardButtons[index].setIcon(image);
 		setVisible(true);
 	}
@@ -194,8 +185,6 @@ public class CardTable extends JFrame{
 
 
 	public void updateArenaIcon(String position, Icon image){
-		//needs image checking
-		//needs string lowercase parsing / checking
 		position.trim();
 		position.toLowerCase();
 		if (position.equals("left"))
