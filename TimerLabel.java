@@ -9,12 +9,14 @@ class TimerLabel extends JLabel{
 	Integer minutes;
 	Integer seconds;
 	Timer timer;
+	Thread thread = new Thread();
 
 	public TimerLabel(){
 		this.minutes = 0;
 		this.seconds = 0;
 		updateText();
-		this.timer = new Timer(1000, new ActionListener(){ 
+		this.timer = new Timer(1000, new ActionListener(){
+
 			@Override
 			public void actionPerformed(ActionEvent e){
 				//Add minutes logic

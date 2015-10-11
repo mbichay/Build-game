@@ -154,13 +154,6 @@ public class CardGameController{
 
 
 	private Boolean checkPlayValidity(int player, int index, int value){
-		if (player < 0 || player > model.getNumPlayers())
-			return false;
-		if (index < 0 || index > model.getNumCardsPerHand())
-			return false;
-		if (value < 0)
-			value = 0;
-
 		if (Math.abs( model.getHand(player).inspectCard(index).getValue().asInt() - value) == 1)
 			return true;
 		return false;
@@ -168,8 +161,6 @@ public class CardGameController{
 
 
 	public void addToScore(int player, int points) {
-		if (player < 0 || points < 0 || player < model.getNumPlayers())
-			return;
 		this.scores[player]+=points;
 		addToDoNothingCount();
 	}
@@ -199,9 +190,6 @@ public class CardGameController{
 		int index;
 
 		public PlayCardListener(int index){
-			// Negative number check
-			if (index < 0)
-				index = 0;
 			this.index = index;
 		}
 
@@ -222,8 +210,6 @@ public class CardGameController{
 		int index;
 
 		public LeftRightListener(int index){
-			if (index < 0)
-				index = 0;
 			this.index = index;
 		}
 
