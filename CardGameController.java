@@ -109,13 +109,13 @@ public class CardGameController{
 			//automation logic
 			for (int i = 0; i <= this.model.getHand(player).getNumCards(); ++i){
 				if (checkPlayValidity(player,i,arenaLeftCard.getValue().asInt())) {
-					this.arenaLeftCard = model.playCard(player,index);
-					this.model.takeCard(player, index);
+					this.arenaLeftCard = model.playCard(player,i);
+					this.model.takeCard(player, i);
 					resetDoNothingCount();
 					return true;
 				} else if (checkPlayValidity(player,i,arenaRightCard.getValue().asInt())) {
-					this.arenaRightCard = model.playCard(player,index);
-					this.model.takeCard(player, index);
+					this.arenaRightCard = model.playCard(player,i);
+					this.model.takeCard(player, i);
 					resetDoNothingCount();
 					return true;
 				} else {
